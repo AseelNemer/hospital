@@ -21,14 +21,12 @@ export default function Create() {
     })
 
     const createDoctor = () => {
-        // console.log(doctor);
-        axios.post('http://localhost:5000/doctor', doctor).then(() => {
+        axios.post('http://localhost:5000/doctors', doctor).then(() => {
             window.location.reload(false);
             //when i add a data it refresh the page
         })
 
     }
-    console.log("heloooo");
     return (
         <>
             <h2>Create Doctor</h2>

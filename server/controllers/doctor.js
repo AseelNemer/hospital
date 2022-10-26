@@ -14,9 +14,11 @@ export const createDoctor=async (req,res)=> {
   
     const newDoctor=new DoctorData(doctor);
     try {
+        // console.log("createeee"+newDoctor);
         await newDoctor.save();
         res.status(201).json(newDoctor);
     } catch (error) {
+        console.log("there is error");
         res.status(409).json({ message: error.message })
     }
 }

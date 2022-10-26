@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
-// import { isEmail } from "validator";
 
 const doctorSchema = new mongoose.Schema({
 
@@ -40,35 +38,13 @@ const doctorSchema = new mongoose.Schema({
       type: String,
       required: [true, "Please enter complete Address of contact person"],
     },
-  
-  
-
   orgNumber: {
     type: String,
     required: [true, "Please enter Mobile Number"],
     minlength: [10, "Please Enter a valid Mobile Number"],
-  },
-});
-
-doctorSchema.pre("save", async function (next) {
-  const salt = await bcrypt.genSalt();
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
-
-doctorSchema.statics.login = async function (email, password) {
-  const doctor = await this.findOne({ email });
-  if (doctor) {
-    const auth = await bcrypt.compare(password, doctor.password);
-    if (auth) {
-      return doctor;
-    }
-    throw Error("Incorrect Password");
   }
-  throw Error("Invalid email");
-};
+})
 
-const Doctor = mongoose.model("doctor", doctorSchema);
+const doctor = mongoose.model("doctor", doctorSchema);
 
-// module.exports = Doctor;
-export default Doctor;
+export default doctor;

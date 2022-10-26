@@ -1,14 +1,14 @@
 import express from 'express';
 import { getDoctors,createDoctor } from '../controllers/doctor.js';
-import doctor from '../models/doctor.js'
+// import doctor from '../models/doctor.js'
 
 const router =express.Router();
 // router.get('/',(req,res)=>{
 //     res.send('router is working');
 // })
 
-router.get('/doctor',getDoctors);
-router.post('/doctor',createDoctor);
+router.get('/doctors',getDoctors);
+router.post('/doctors',createDoctor);
 // router.delete('/students/:id',deleteStudent);
 
 export default router;
