@@ -1,31 +1,34 @@
-import { Container, AppBar, Typography, Grow , Grid  } from '@material-ui/core'
-import Create from './components/CreateDoctor.js'
-import useStyles from './styles';
+
+import Login from './components/Login/logIn.js'
+import Homepage from './components/homepage/homepage.js'
+
+import { BrowserRouter as Router, Routes, Route , redirect} from 'react-router-dom'
+import { useState } from 'react';
 function App() {
-  const classes=useStyles();
+  const [user, setLoginUser] = useState({
 
-  
+  })
+
   return (
+
     <div className="App">
-        <Container maxWidth='ig'>
-          <AppBar className={classes.appBar} position ="static" color ="inherit">
-            <Typography className={classes.heading} variant="h2" align="center"> Student Create & Show</Typography>
-          </AppBar>
+{/* <Route path="/" element={<Home />} /> */}
+
+      {/* <Login/> */}
+      <Router>
+        <Routes>
+        
+        <Route path="/" element={<Login setLoginUser={setLoginUser} />} />
+        <Route path="/Homepage" element={<Homepage />}/>
+          {/* <Route path="/Register"><Register /></Route> */}
+        </Routes>
+
+      </Router>
 
 
-          <Grow in>
-            <Container>
-              <Grid container justify="space-between" alignItems="strech">
-                <Grid item xs={12} sm={4}>
-                  <AppBar className={classes.appBar} position="static" color="inherit">
-                    <Create/>
-                  </AppBar>
-                </Grid>
-              </Grid>
-            </Container>
-          </Grow>
-        </Container>
+
     </div>
+
   );
 }
 
