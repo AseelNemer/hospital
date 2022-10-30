@@ -53,11 +53,11 @@ export default function Create() {
                 <TextField id="outlined-basic" label="password" variant="outlined" value={doctor.password} onChange={(event) => {
                     setDoctor({ ...doctor, password: event.target.value })
                 }} />
-                <TextField id="outlined-basic" label="city" variant="outlined" value={doctor.city} onChange={(event) => {
-                    setDoctor({ ...doctor, city: event.target.value })
-                }} />
                 <TextField id="outlined-basic" label="building" variant="outlined" value={doctor.building} onChange={(event) => {
                     setDoctor({ ...doctor, building: event.target.value })
+                }} />
+                <TextField id="outlined-basic" label="city" variant="outlined" value={doctor.city} onChange={(event) => {
+                    setDoctor({ ...doctor, city: event.target.value })
                 }} />
                 <TextField id="outlined-basic" label="orgNumber" variant="outlined" value={doctor.orgNumber} onChange={(event) => {
                     setDoctor({ ...doctor, orgNumber: event.target.value })

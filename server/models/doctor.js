@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const doctorSchema = new mongoose.Schema({
+const doctorSchema =  mongoose.Schema({
 
-    firstName: {
+  firstName: {
       type: String,
       required: [true, "Please enter full Name"],
     },
@@ -15,7 +15,7 @@ const doctorSchema = new mongoose.Schema({
   mobile: {
     type: String,
     required: [true, "Please enter Mobile Number"],
-    minlength: [10, "Please Enter a valid Mobile Number"],
+    // minlength: [10, "Please Enter a valid Mobile Number"],
   },
   email: {
     type: String,
@@ -27,7 +27,7 @@ const doctorSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please enter password"],
-    minlength: [8, "Minimum length of password should must be 8 characters"],
+    // minlength: [8, "Minimum length of password should must be 8 characters"],
   },
   
     building: {
@@ -41,7 +41,7 @@ const doctorSchema = new mongoose.Schema({
   orgNumber: {
     type: String,
     required: [true, "Please enter Mobile Number"],
-    minlength: [10, "Please Enter a valid Mobile Number"],
+    // minlength: [10, "Please Enter a valid Mobile Number"],
   }
 })
 

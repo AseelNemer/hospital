@@ -22,7 +22,7 @@ const port=process.env.port || 5000;
 mongoose.connect(connectio_url, {
     useNewUrlParser :true,
     useUnifiedTopology:true,
-    // useFindAndModify:false
+    //useFindAndModify:false
 }).then(()=> app.listen(port, () =>
 console.log(`connection is established and running on port: ${port}`)
 )).catch((err) => console.log(err.message));
