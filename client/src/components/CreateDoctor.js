@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { Link } from "react-router-dom";
+
 
 
 
@@ -64,7 +66,7 @@ export default function Create() {
                 }} />
 
 
-                <Button variant="contained" onClick={createDoctor}>Create</Button>
+                <Button component={Link} to="/Login" variant="contained" onClick={createDoctor}>Create</Button>
 
             </Box>
         </>
