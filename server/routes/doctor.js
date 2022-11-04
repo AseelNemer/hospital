@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { getDoctors,createDoctor,showDoctor ,loginnow} from '../controllers/doctor.js';
-import { getPatients,createPatient } from '../controllers/patient.js';
+import { getPatients,createPatient ,showPatient, loginpat} from '../controllers/patient.js';
 
 import doctor from '../models/doctor.js'
 
@@ -19,6 +19,8 @@ router.post('/Login',loginnow);
 
 router.get('/patients',getPatients);
 router.post('/patients',createPatient);
+router.get('/patients/:id', showPatient);
+router.post('/PatientLogin',loginpat);
 
 
 export default router;

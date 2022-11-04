@@ -14,9 +14,9 @@ export const getPatients = async (req, res) => {
     }
 }
 
-export const loginnow = async (req, res) => {
+export const loginpat = async (req, res) => {
     const { email, password } = req.body;
-    //console.log("the user is in");
+    console.log("the user is in", req.body);
     PatientData.findOne({ email: email }, (err, user) => {
         if (user) {
             if (password === user.password) {

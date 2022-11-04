@@ -4,6 +4,8 @@ import PatientLogin from './components/Login/patientLogin.js'
 import Homepage from './components/homepage/homepage.js'
 import Init from './components/initPage.js'
 import DoctorProfile from './components/DoctorProfile.js'
+import PatientProfile from './components/PatientProfile.js'
+
 import CreateP from './components/CreatePatient.js'
 import Create from './components/CreateDoctor.js'
 
@@ -60,6 +62,7 @@ function App() {
           />} />
           <Route path="/Homepage" element={<Homepage />} />
           <Route path='/doctors/:id' element={<DoctorProfile/>}/>
+          <Route path='/patients/:id' element={<PatientProfile/>}/>
           <Route path='/register' element={<Create/>}/>
           <Route path='/registerpat' element={<CreateP/>}/>
 

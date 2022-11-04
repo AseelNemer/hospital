@@ -15,17 +15,23 @@ const PatientLogin = ({ setLoginUser }) => {
 
     const loginnow = () => {
         axios.post('http://localhost:5000/PatientLogin', patient).then(res => {
-            console.log(res.data.user);
-
             if (res.data.statuss === "true") {
-                console.log("succ");
-                //setLoginUser(res.data.user)
-                history('/homepage')
+                history(`/patients/${res.data.user._id}`)
             }
             else {
-
                 alert(res.data.message)
             }
+            //console.log(res.data.user);
+
+            // if (res.data.statuss === "true") {
+            //     console.log("succ");
+            //     //setLoginUser(res.data.user)
+            //     history('/homepage')
+            // }
+            // else {
+
+            //     alert(res.data.message)
+            // }
         })
 
     }
