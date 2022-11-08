@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-
+import pkg from 'mongoose';
+const { Schema } = pkg;
 const doctorSchema =  mongoose.Schema({
 
   firstName: {
@@ -42,7 +43,14 @@ const doctorSchema =  mongoose.Schema({
     type: String,
     required: [true, "Please enter Mobile Number"],
     // minlength: [10, "Please Enter a valid Mobile Number"],
-  }
+  },
+  sicks:[
+    {
+      type:Schema.Types.ObjectId,
+      ref:"patient"
+    }
+  ]
+  
 })
 
 const doctor = mongoose.model("doctor", doctorSchema);

@@ -3,7 +3,7 @@ import Login from './components/Login/logIn.js'
 import PatientLogin from './components/Login/patientLogin.js'
 import Homepage from './components/homepage/homepage.js'
 import Init from './components/initPage.js'
-import DoctorProfile from './components/DoctorProfile.js'
+import Doctorprofile from './components/DoctorProfile.js'
 import PatientProfile from './components/PatientProfile.js'
 
 import CreateP from './components/CreatePatient.js'
@@ -61,7 +61,7 @@ function App() {
             setToastShow={setToastShow}
           />} />
           <Route path="/Homepage" element={<Homepage />} />
-          <Route path='/doctors/:id' element={<DoctorProfile/>}/>
+          <Route path='/doctors/:id' element={<Doctorprofile/>}/>
           <Route path='/patients/:id' element={<PatientProfile/>}/>
           <Route path='/register' element={<Create/>}/>
           <Route path='/registerpat' element={<CreateP/>}/>

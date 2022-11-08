@@ -1,6 +1,8 @@
 import DoctorData from "../models/doctor.js"; 
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import PatientData from "../models/patient.js";
+
 
 
 
@@ -65,13 +67,19 @@ export const loginnow = async (req, res) => {
 
 export const showDoctor =async (req,res) => {
       const id = req.params.id; 
-      //console.log(id);
+      let doctor;
       try {
-          const doctor= await DoctorData.findById(id);
-          res.status(200).json(doctor);
+           doctor= await DoctorData.findById(id);
       } catch (error) {
           console.log(error);
       }
+      try {
+        const allpatients = await PatientData.find();
+       const par={"a":allpatients,"b":doctor}
+        res.status(200).json(par);
+    } catch (error) {
+        res.status(404).json({ message: error.message })
+    }
   } 
 
 export const createDoctor = async (req, res) => {

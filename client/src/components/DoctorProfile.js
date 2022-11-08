@@ -9,40 +9,84 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useParams} from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Button from '@mui/material/Button';
+import CreateP from './CreatePatient.js'
+import { useNavigate } from "react-router-dom";
 
 
 
 
-export default function DoctorProfile() {
+
+
+
+
+export default function Doctorprofile() {
+    
+    const [patientsList, setPatientList] = useState([]);
+    
 
     const [doctor, setDoctor] = useState(
         {
-            firstName:'',
+            firstName: '',
             surName: '',
-            mobile:'',
-            email:'',
+            mobile: '',
+            email: '',
         }
     );
-    const {id} = useParams();
-    // console.log(id);
 
+
+
+    const { id } = useParams();
+    //let dic={'doc':doctor}
+    //console.log("my id ", id);
+   
     useEffect(() => {
-        axios.get(`http://localhost:5000/doctors/${id}`).then((doctor) => {
-            // console.log(doctor.data);
-            setDoctor(doctor.data);
-            // console.log(id);
-        },doctor)
-        // .then(function (response) {
-        //     console.log(response);
-        //   })
-        
+
+
+        axios.get(`http://localhost:5000/doctors/${id}`).then((par) => {
+            //console.log("params :",par);
+            setDoctor(par.data.b);
+            setPatientList(par.data.a);
+        }, [])
+
+        // axios.post(`http://localhost:5000/doctors/${id}`,doctor).then((par) => {
+        //     //console.log("params :",par);
+
+        //     })
+
+
+
     })
+    const navigate=useNavigate()
+
+    const open = () => {
+        console.log("i am in nevigate");
+        navigate(
+            "/registerpat", {
+            state: {
+                idDoctor: id
+            }
+        }
+        );
+    };
 
 
     return (
         <>
-            <h2>doctor</h2>
+            <h2>doctor Data</h2>
+            <Link
+                to="/registerpat" state={{ id: "shatha" }}>
+                opne nev
+            </Link>
+            <Button onClick={open}
+                variant="contained" color="primary">
+
+                Add patient
+            </Button>
+
+
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
@@ -68,7 +112,43 @@ export default function DoctorProfile() {
                     </TableBody>
                 </Table>
             </TableContainer>
+
+            <h2>All patients</h2>
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>First Name</TableCell>
+                            <TableCell align="right">Last name</TableCell>
+                            <TableCell align="right">Mobile</TableCell>
+                            <TableCell align="right">Email</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {patientsList.map((patient, key) => (
+                            <TableRow
+                                key={key}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell component="th" scope="row">
+                                    {patient.firstName}
+                                </TableCell>
+                                <TableCell align="right">{patient.surName}</TableCell>
+                                <TableCell align="right">{patient.mobile}</TableCell>
+                                <TableCell align="right">{patient.email}</TableCell>
+
+                                <TableCell align="right">
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+
         </>
+
+
+
     );
 }
 

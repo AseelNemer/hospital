@@ -1,4 +1,6 @@
 import PatientData from "../models/patient.js";
+import DoctorData from "../models/doctor.js"; 
+
 import mongoose from "mongoose";
 import { useNavigate } from "react-router-dom";
 //let navigate = useNavigate();
@@ -59,13 +61,38 @@ export const showPatient =async (req,res) => {
 
 export const createPatient = async (req, res) => {
     const patient = req.body;
-    console.log("i am  create");
+    const iddoctor=req.body.myDoctor
+    const emailpatient=req.body.email
+    console.log("patient :", patient);
 
     const newPatient = new PatientData(patient);
     try {
         await newPatient.save();
-        res.status(201).json(newPatient);
+        //res.status(201).json(newPatient);
     } catch (error) {
         res.status(409).json({ message: error.message })
     }
+
+    let idpatient,dic;
+    PatientData.findOne({ email: emailpatient }, (err, user) => {
+        if (user) {
+             idpatient =user._id
+                //dic={'a':idpatient}
+          console.log("idpat:",idpatient);
+        }
+    })
+
+
+    
+    DoctorData.findOne({ _id: iddoctor }, async (err, user) => {
+        if (user) {
+           
+           // console.log("i am in doctor", JSON.stringify(iddoctor));
+            user.sicks.push(idpatient);
+            await user.save();
+           
+            console.log("the user is",user);
+
+        }
+    })
 }

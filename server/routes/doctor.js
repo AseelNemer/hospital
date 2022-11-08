@@ -17,10 +17,7 @@ router.get('/doctors/:id', showDoctor);
 router.post('/Login',loginnow);
 
 
-router.get('/patients',getPatients);
-router.post('/patients',createPatient);
-router.get('/patients/:id', showPatient);
-router.post('/PatientLogin',loginpat);
+
 
 
 export default router;

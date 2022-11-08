@@ -4,11 +4,17 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 
 
 
 
 export default function CreateP() {
+    const location = useLocation();
+    let iddoctor=location.state,idDoctor
+    //const { state } = state
+   //console.log("state:",iddoctor);
 
     const [patient, setPatient] = useState({
 
@@ -20,10 +26,14 @@ export default function CreateP() {
         building: 'ii',
         city: 'ii',
         orgNumber: '3692581471',
+        myDoctor:iddoctor.idDoctor
+
     })
 
     const createPatient = () => {
-        //console.log("patient");
+        console.log("patient");
+        // const par={"pat":patient,"doc":emaildoc}
+
         axios.post('http://localhost:5000/patients', patient).then(response => { 
             console.log("ss",response)
         })
