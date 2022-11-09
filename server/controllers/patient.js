@@ -77,8 +77,6 @@ export const createPatient = async (req, res) => {
     PatientData.findOne({ email: emailpatient }, (err, user) => {
         if (user) {
              idpatient =user._id
-                //dic={'a':idpatient}
-          console.log("idpat:",idpatient);
         }
     })
 
@@ -87,11 +85,9 @@ export const createPatient = async (req, res) => {
     DoctorData.findOne({ _id: iddoctor }, async (err, user) => {
         if (user) {
            
-           // console.log("i am in doctor", JSON.stringify(iddoctor));
-            user.sicks.push(idpatient);
+            user.sicks.push(newPatient);
             await user.save();
-           
-            console.log("the user is",user);
+            //res.status(201).json(newPatient);
 
         }
     })
