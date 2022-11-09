@@ -3,10 +3,15 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { useParams} from 'react-router-dom';
 
 
 
 export default function CreatePatient() {
+    const {id} = useParams();
+    console.log(id);
+
+
 
     const [patient, setPatient] = useState({
 

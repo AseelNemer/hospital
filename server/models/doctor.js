@@ -1,3 +1,4 @@
+import { ObjectID } from "bson";
 import mongoose from "mongoose";
 
 const doctorSchema =  mongoose.Schema({
@@ -42,7 +43,8 @@ const doctorSchema =  mongoose.Schema({
     type: String,
     required: [true, "Please enter Mobile Number"],
     // minlength: [10, "Please Enter a valid Mobile Number"],
-  }
+  },
+  patients:[{type:  mongoose.Schema.Types.ObjectId , ref:'patient'}]
 })
 
 const doctor = mongoose.model("doctor", doctorSchema);

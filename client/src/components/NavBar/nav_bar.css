@@ -1,0 +1,40 @@
+.Navbar {   
+    background-color: rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 5rem 3fr repeat(2 , 1fr);
+    grid-template-rows: minmax(4rem ,3rem);
+    justify-items: center;
+    align-items: center;
+}
+
+.logoImage{
+    max-width: 2rem;
+    padding-left: 1.2rem;
+    justify-self: left;
+}
+
+.logoImage>img{
+    max-width: 3rem;
+}
+
+.logoText{
+    justify-self: left;
+    font-style: italic;
+    font-size: larger;
+    font-family: serif;
+    text-decoration: none;
+    color: rgba(10, 183, 172, 0.916);
+}
+
+.link {
+    color: rgb(59, 184, 216);
+    font-weight: 500;
+    font-size: larger;
+    text-decoration: none;
+}
+
+.Navbar>a:hover{
+    color: rgba(0, 0, 0, 0.26);
+}

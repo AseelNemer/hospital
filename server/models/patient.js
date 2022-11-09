@@ -42,7 +42,8 @@ const patientSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter Mobile Number"],
     minlength: [10, "Please Enter a valid Mobile Number"],
-  }
+  },
+  doctors:[{type:mongoose.Schema.Types.ObjectId , ref: 'doctor'}]
 })
 
 const patient = mongoose.model("patient", patientSchema);

@@ -1,15 +1,18 @@
-
 import Login from './components/Login/logIn.js'
 import PatientLogin from './components/Login/patientLogin.js'
 import Homepage from './components/homepage/homepage.js'
-import Init from './components/initPage.js'
-import DoctorProfile from './components/DoctorProfile.js'
-import CreatePatient from './components/CreatePatient.js'
-import Create from './components/CreateDoctor.js'
-import { BrowserRouter as Router, Routes, Route, redirect } from 'react-router-dom'
+import Init from './components/homepage/initPage.js'
+import DoctorProfile from './components/ProfilePages/DoctorProfile.js'
+import CreatePatient from './components/CreatePages/CreatePatient'
+import NavBar from './components/NavBar/NavBar.js'
+import Create from './components/CreatePages/CreateDoctor.js'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import './app.css';
+import Go from './components/ProfilePages/go.js'
+import Profile from './components/ProfilePages/Profile.js'
 
 function App() {
   const [healthID, setHealthID] = useState("");
@@ -37,38 +40,51 @@ function App() {
     setToastShow(false);
   }
   const [user, setLoginUser] = useState({
-
-  })
+    email: "",
+})
+  const [doctorID, setDoctorID] = useState('');
 
   return (
 
     <div className="App">
-      {/* <Route path="/" element={<Home />} /> */}
+      <Router >
+        <div className='appHeader' class='appHeader'>
+          <NavBar />
+        </div>
+        <div className='appBody'>
+          <Routes >
+            {/* <Route exact path="/">
+              {
+                user && user._id ? <Homepage /> : <Login />
+              }<Homepage /></Route> */}
+            <Route path="/" element={<Init />} />
+            <Route path="/PatientLogin" element={<PatientLogin setLoginUser={setLoginUser} />} />
+            <Route path="/Login" element={<Login
+              setLoginUser={setLoginUser}
+            />} />
+            <Route path="/Homepage" element={<Homepage />} />
+            <Route path='/doctors/:id'>
+            {console.log(user)}
 
-      {/* <Login/> */}
-      <Router>
-        <Routes>
-          {/* <Route path="/" element={<Init settoastCondition={settoastCondition}
-              setToastShow={setToastShow} />} /> */}
-              <Route path="/" element={<Init/>} />
-          <Route path="/PatientLogin" element={<PatientLogin setLoginUser={setLoginUser} />} />
-          <Route path="Login" element={<Login
-          setLoginUser={setLoginUser}
-            settoastCondition={settoastCondition}
-            setToastShow={setToastShow}
-          />} />
-          <Route path="/Homepage" element={<Homepage />} />
-          <Route path='/doctors/:id' element={<DoctorProfile/>}/>
-          <Route path='/register' element={<Create/>}/>
+              <Route index element={<DoctorProfile
+                user={user}
+              />} />
+              <Route path='/profile' element={<Profile
+                user={user}
+              />} />
+            </Route> 
+            {/* <Route path='/profile' element={<Profile  user={user}
+             />}>
+              {console.log(user)} </Route> */}
 
+            {/* <Route path='/doctors/:id' element={<DoctorProfile setLoginUser={setLoginUser}/> }/> */}
+            {/* <Route path='/doctors/doctorProf' element={<DoctorProfile />} > */}
+            <Route path='/register' element={<Create />} />
+            {/* <Route path='/Go' element={<Go />} /> */}
 
-          {/* <Route path="/Register"><Register /></Route> */}
-        </Routes>
-
+          </Routes>
+        </div>
       </Router>
-
-
-
     </div>
 
   );

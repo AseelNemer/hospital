@@ -1,0 +1,50 @@
+.inputs {
+    width: 93%;
+    color: #444;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px 10px;
+}
+
+.buttons {
+    justify-content: center;
+    align-items: center;
+    grid-column: 1/2;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+}
+
+
+
+.btns {
+
+    width: 250px;
+    color: #6c6b6f;
+    background-color: rgba(63, 211, 222, 0.05);
+    border-style: solid;
+    border-color: #3f8f3f56;
+    box-shadow: 1px 1px 5px .3px rgba(212, 19, 19, 0.3);
+    border-radius: 20px;
+    font-size: 1.5rem;
+    padding: .8rem;
+}
+
+.btns:hover {
+    background-color: rgba(68, 26, 168, 0.3);
+    box-shadow: .5px .5px 5px 1px rgba(141, 141, 141, 0.2);
+}
+
+.center {
+    text-align: center;
+}
+
+.initbody {
+    display: grid;
+    justify-items: center;
+    min-height: 100%;
+    object-fit: fill;
+    padding: .1rem;
+    min-width: 100%;
+}
