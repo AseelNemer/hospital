@@ -1,6 +1,6 @@
-import { ObjectID } from "bson";
 import mongoose from "mongoose";
-
+import pkg from 'mongoose';
+const { Schema } = pkg;
 const doctorSchema =  mongoose.Schema({
 
   firstName: {
@@ -44,7 +44,13 @@ const doctorSchema =  mongoose.Schema({
     required: [true, "Please enter Mobile Number"],
     // minlength: [10, "Please Enter a valid Mobile Number"],
   },
-  patients:[{type:  mongoose.Schema.Types.ObjectId , ref:'patient'}]
+  sicks:[
+    {
+      type:Schema.Types.ObjectId,
+      ref:"patient"
+    }
+  ]
+  
 })
 
 const doctor = mongoose.model("doctor", doctorSchema);

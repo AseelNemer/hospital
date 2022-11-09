@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 const PatientLogin = ({ setLoginUser }) => {
     const history = useNavigate()
@@ -14,17 +15,23 @@ const PatientLogin = ({ setLoginUser }) => {
 
     const loginnow = () => {
         axios.post('http://localhost:5000/PatientLogin', patient).then(res => {
-            console.log(res.data.user);
-
             if (res.data.statuss === "true") {
-                console.log("succ");
-                //setLoginUser(res.data.user)
-                history('/homepage')
+                history(`/patients/${res.data.user._id}`)
             }
             else {
-
                 alert(res.data.message)
             }
+            //console.log(res.data.user);
+
+            // if (res.data.statuss === "true") {
+            //     console.log("succ");
+            //     //setLoginUser(res.data.user)
+            //     history('/homepage')
+            // }
+            // else {
+
+            //     alert(res.data.message)
+            // }
         })
 
     }
@@ -49,6 +56,11 @@ const PatientLogin = ({ setLoginUser }) => {
 
 
                 <Button variant="contained" onClick={loginnow}>Log in</Button>
+                <h1>if you'r new register here!</h1>
+                    <Button component={Link} to="/registerpat" variant="contained" color="primary"> 
+                    {/* onClick={()=>{console.log("hhh"+doctor);}}> */}
+                      Register
+                  </Button>
 
             </Box>
         </>

@@ -13,6 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 import './app.css';
 import Go from './components/ProfilePages/go.js'
 import Profile from './components/ProfilePages/Profile.js'
+import CreateP from './components/CreatePatient.js'
+import PatientProfile from './components/PatientProfile.js'
 
 function App() {
   const [healthID, setHealthID] = useState("");
@@ -69,13 +71,18 @@ function App() {
               <Route index element={<DoctorProfile
                 user={user}
               />} />
-              <Route path='/profile' element={<Profile
+              {/* <Route path='/profile' element={<Profile
                 user={user}
-              />} />
+              />} /> */}
             </Route> 
-            {/* <Route path='/profile' element={<Profile  user={user}
+            <Route path='/patients/:id' element={<PatientProfile/>}/>
+          <Route path='/register' element={<Create/>}/>
+          <Route path='/registerpat' element={<CreateP/>}/>
+
+
+            <Route path='/profile' element={<Profile  user={user}
              />}>
-              {console.log(user)} </Route> */}
+              {console.log(user)} </Route>
 
             {/* <Route path='/doctors/:id' element={<DoctorProfile setLoginUser={setLoginUser}/> }/> */}
             {/* <Route path='/doctors/doctorProf' element={<DoctorProfile />} > */}

@@ -1,17 +1,19 @@
 import express from 'express';
-import { getPatients,createPatient,loginnow } from '../controllers/patient.js';
-import doctor from '../models/doctor.js'
+import { getDoctors } from '../controllers/doctor.js';
+import { getPatients,createPatient,showPatient,loginpat } from '../controllers/patient.js';
+
+
 
 
 const router =express.Router();
-// router.get('/',(req,res)=>{
-//     res.send('router is working');
-// })
 
 router.get('/patients',getPatients);
 router.post('/patients',createPatient);
-router.post('/PatientLogin',loginnow);
-router.get('/Homepage');
+router.get('/patients/:id', showPatient);
+// router.post('/patients/:id', showPatient);
+
+router.post('/PatientLogin',loginpat);
+
 
 
 export default router;
