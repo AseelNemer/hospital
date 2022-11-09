@@ -76,10 +76,10 @@ export default function Doctorprofile() {
     return (
         <>
             <h2>doctor Data</h2>
-            <Link
+            {/* <Link
                 to="/registerpat" state={{ id: "shatha" }}>
                 opne nev
-            </Link>
+            </Link> */}
             <Button onClick={open}
                 variant="contained" color="primary">
 

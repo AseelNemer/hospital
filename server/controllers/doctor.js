@@ -66,20 +66,47 @@ export const loginnow = async (req, res) => {
 // } 
 
 export const showDoctor =async (req,res) => {
+    let flag=0
+    let arr =[];
       const id = req.params.id; 
+
       let doctor;
       try {
            doctor= await DoctorData.findById(id);
+                                                  
       } catch (error) {
           console.log(error);
       }
-      try {
+      try 
+      {
         const allpatients = await PatientData.find();
-       const par={"a":allpatients,"b":doctor}
+        
+        //console.log("patin:", allpatients[0]._id);
+        
+        for (let index = 0; index < doctor.sicks.length; index++) {
+            flag=0;
+            for (let i = 0; i < allpatients.length && flag==0; i++) {
+                //console.log(" doctor is : ", doctor.sicks[index],"  sick is : ",allpatients[i]._id,"\n" );
+                if(JSON.stringify(doctor.sicks[index])===JSON.stringify(allpatients[i]._id)){
+                    
+                    //console.log("ss");
+
+                    arr.push(allpatients[i])
+                    flag=1;
+                }
+
+                
+            }
+                
+            
+        }
+       //console.log("arr is \n",arr);
+        const par={"a":arr,"b":doctor}
         res.status(200).json(par);
-    } catch (error) {
+      } catch (error) 
+      {
         res.status(404).json({ message: error.message })
-    }
+      }
   } 
 
 export const createDoctor = async (req, res) => {
