@@ -33,7 +33,7 @@ const patientSchema = new mongoose.Schema({
     minlength: [8, "Minimum length of password should must be 8 characters"],
   },
   
-    building: {
+    idnum: {
       type: String,
       required: [true, "Please enter complete Address of contact person"],
     },

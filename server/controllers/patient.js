@@ -63,7 +63,7 @@ export const createPatient = async (req, res) => {
     const patient = req.body;
     const iddoctor=req.body.myDoctor
     const emailpatient=req.body.email
-    console.log("patient :", patient);
+    //console.log("patient :", patient);
 
     const newPatient = new PatientData(patient);
     try {

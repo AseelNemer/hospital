@@ -5,6 +5,7 @@ import Homepage from './components/homepage/homepage.js'
 import Init from './components/initPage.js'
 import Doctorprofile from './components/DoctorProfile.js'
 import PatientProfile from './components/PatientProfile.js'
+import Editpat from './components/edit/editpatient.js'
 
 import CreateP from './components/CreatePatient.js'
 import Create from './components/CreateDoctor.js'
@@ -65,6 +66,10 @@ function App() {
           <Route path='/patients/:id' element={<PatientProfile/>}/>
           <Route path='/register' element={<Create/>}/>
           <Route path='/registerpat' element={<CreateP/>}/>
+          <Route path='/editpatient' element={<Editpat/>}/>
+
+
+          
 
 
           {/* <Route path="/Register"><Register /></Route> */}

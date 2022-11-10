@@ -23,7 +23,7 @@ export default function CreateP() {
         mobile: '0559697778',
         email: 'p@gamil.com',
         password: '14725869',
-        building: 'ii',
+        idnum: '206639841',
         city: 'ii',
         orgNumber: '3692581471',
         myDoctor:iddoctor.idDoctor
@@ -75,8 +75,8 @@ export default function CreateP() {
                 <TextField id="outlined-basic" label="city" variant="outlined" value={patient.city} onChange={(event) => {
                     setPatient({ ...patient, city: event.target.value })
                 }} />
-                <TextField id="outlined-basic" label="building" variant="outlined" value={patient.building} onChange={(event) => {
-                    setPatient({ ...patient, building: event.target.value })
+                <TextField id="outlined-basic" label="ID number" variant="outlined" value={patient.idnum} onChange={(event) => {
+                    setPatient({ ...patient, idnum: event.target.value })
                 }} />
                 <TextField id="outlined-basic" label="orgNumber" variant="outlined" value={patient.orgNumber} onChange={(event) => {
                     setPatient({ ...patient, orgNumber: event.target.value })
