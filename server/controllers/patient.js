@@ -1,5 +1,7 @@
 import PatientData from "../models/patient.js";
 import DoctorData from "../models/doctor.js"; 
+import ComplaintData from "../models/complaint.js"; 
+
 
 import mongoose from "mongoose";
 import { useNavigate } from "react-router-dom";
@@ -92,3 +94,39 @@ export const createPatient = async (req, res) => {
         }
     })
 }
+
+export const createcomplaint =async (req,res) => {
+   const idpat = req.body.idpatient; 
+    const complaint=req.body
+    const newComplaintt = new ComplaintData(complaint);
+    console.log("complaint ::",complaint);
+
+    
+
+    PatientData.findOne({ _id: idpat },async(err,user)=>{
+        if (user) {
+            user.myComplaints.push(newComplaintt);
+            await user.save();
+
+        }
+    })
+
+    try 
+    {
+        await newComplaintt.save();
+    }
+
+     catch (error)
+    {
+        console.log("i am in error",error);
+        res.status(409).json({ message: error.message })
+
+    }
+
+      
+
+   
+
+}
+
+

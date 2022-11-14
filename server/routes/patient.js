@@ -1,6 +1,6 @@
 import express from 'express';
 import { getDoctors } from '../controllers/doctor.js';
-import { getPatients,createPatient,showPatient,loginpat } from '../controllers/patient.js';
+import { getPatients,createPatient,showPatient,loginpat,createcomplaint } from '../controllers/patient.js';
 
 
 
@@ -13,6 +13,7 @@ router.get('/patients/:id', showPatient);
 // router.post('/patients/:id', showPatient);
 
 router.post('/PatientLogin',loginpat);
+router.post('/sendcomplaint',createcomplaint);
 
 
 

@@ -16,7 +16,8 @@ const doctorSchema =  mongoose.Schema({
   mobile: {
     type: String,
     required: [true, "Please enter Mobile Number"],
-    // minlength: [10, "Please Enter a valid Mobile Number"],
+     length: [10, "Please Enter a valid Mobile Number"],
+     
   },
   email: {
     type: String,

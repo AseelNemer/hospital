@@ -7,15 +7,17 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useParams} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
+import 'react-notifications/lib/notifications.css';
+
 
 
 
 
 export default function PatientProfile() {
-
+    
     const [patient, setPatient] = useState(
         {
             firstName:'',
@@ -24,14 +26,33 @@ export default function PatientProfile() {
             email:'',
         }
     );
+
+
     const {id} = useParams();
     // console.log(id);
 
+    const navigate = useNavigate()
+    const complaint = () => {
+         console.log("i am in nevigate",patient.firstName);
+
+        navigate(
+            "/complaint", {
+            state: {
+                idPatient: id,
+                firstt:patient.firstName,
+                emaill:patient.email
+            }
+        }
+        );
+    };
+   
+
     useEffect(() => {
         axios.get(`http://localhost:5000/patients/${id}`).then((patient) => {
+
             // console.log(doctor.data);
             setPatient(patient.data);
-            // console.log(id);
+            // console.log("ss",firstname);
         },patient)
         // .then(function (response) {
         //     console.log(response);
@@ -43,6 +64,11 @@ export default function PatientProfile() {
     return (
         <>
             <h2>patient</h2>
+            <Button onClick={complaint}
+                variant="contained" color="primary">
+
+                Write Complaint
+            </Button>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>

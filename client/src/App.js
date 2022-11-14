@@ -9,6 +9,9 @@ import Editpat from './components/edit/editpatient.js'
 
 import CreateP from './components/CreatePatient.js'
 import Create from './components/CreateDoctor.js'
+import Complaintpat from './components/patient/complaint.js'
+
+
 
 import { BrowserRouter as Router, Routes, Route, redirect } from 'react-router-dom'
 import { useState } from 'react';
@@ -67,6 +70,7 @@ function App() {
           <Route path='/register' element={<Create/>}/>
           <Route path='/registerpat' element={<CreateP/>}/>
           <Route path='/editpatient' element={<Editpat/>}/>
+          <Route path='/complaint' element={<Complaintpat/>}/>
 
 
           
