@@ -1,34 +1,26 @@
 import Login from './components/Login/logIn.js'
 import PatientLogin from './components/Login/patientLogin.js'
 import Homepage from './components/homepage/homepage.js'
-<<<<<<< HEAD
 import Init from './components/homepage/initPage.js'
 import DoctorProfile from './components/ProfilePages/DoctorProfile.js'
 import CreatePatient from './components/CreatePages/CreatePatient'
 import NavBar from './components/NavBar/NavBar.js'
 import Create from './components/CreatePages/CreateDoctor.js'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-=======
-import Init from './components/initPage.js'
 import Doctorprofile from './components/DoctorProfile.js'
 import PatientProfile from './components/PatientProfile.js'
 import Editpat from './components/edit/editpatient.js'
 
 import CreateP from './components/CreatePatient.js'
-import Create from './components/CreateDoctor.js'
 import Complaintpat from './components/patient/complaint.js'
 
 
 
-import { BrowserRouter as Router, Routes, Route, redirect } from 'react-router-dom'
->>>>>>> 190ac2c0030c0e3cc277cccb71d813c9a0bacc25
 import { useState } from 'react';
 import "react-toastify/dist/ReactToastify.css";
 import './app.css';
 import Go from './components/ProfilePages/go.js'
 import Profile from './components/ProfilePages/Profile.js'
-import CreateP from './components/CreatePatient.js'
-import PatientProfile from './components/PatientProfile.js'
 import SideBar from './components/SideBar.js';
 import DoctorSidebar from './components/DoctorSidebar.js'
 import Schedule1 from './components/Schedule.js'
@@ -61,14 +53,6 @@ function App() {
           <Route path="/PatientLogin" element={<PatientLogin setLoginUser={setLoginUser} />} />
           <Route path="/Login" element={<Login setLoginUser={setLoginUser} />} />
           <Route path="/Homepage" element={<Homepage />} />
-<<<<<<< HEAD
-          {/* <SideBar> */}
-            {/* <Route path='doctors/:id' >
-              <Route index element={<DoctorProfile />} />
-              <Route path='profile' element={<Profile />} />
-              <Route path='/patients/:id' element={<PatientProfile />} /></Route>
-             */}
-=======
           <Route path='/doctors/:id' element={<Doctorprofile/>}/>
           <Route path='/patients/:id' element={<PatientProfile/>}/>
           <Route path='/register' element={<Create/>}/>
@@ -78,7 +62,6 @@ function App() {
 
 
           
->>>>>>> 190ac2c0030c0e3cc277cccb71d813c9a0bacc25
 
 
             <Route path='doctors'  element ={<DoctorSidebar/>}>

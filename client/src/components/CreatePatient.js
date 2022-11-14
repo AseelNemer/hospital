@@ -5,16 +5,13 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-<<<<<<< HEAD
-import { useNavigate } from "react-router-dom"
-=======
 import InputAdornment from "@material-ui/core/InputAdornment";
 import validator from 'validator'
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import data from './data.json'
->>>>>>> 190ac2c0030c0e3cc277cccb71d813c9a0bacc25
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -29,17 +26,6 @@ export default function CreateP() {
 
     const [patient, setPatient] = useState({
 
-<<<<<<< HEAD
-        firstName: 'Hani',
-        surName: 'H',
-        mobile: '0559697778',
-        email: 'p@gamil.com',
-        password: '14725869',
-        building: 'ii',
-        city: 'ii',
-        orgNumber: '3692581471',
-        myDoctor: iddoctor.idDoctor
-=======
         firstName: '',
         surName: '',
         mobile: '',
@@ -49,18 +35,12 @@ export default function CreateP() {
         city: '',
         orgNumber: '',
         myDoctor:iddoctor.idDoctor
->>>>>>> 190ac2c0030c0e3cc277cccb71d813c9a0bacc25
 
     })
     const [isError, setIsError] = useState(false);
     const [passwordShown, setPasswordShown] = useState(false);
     const [selectedCountry, setSelectedCountry] = React.useState();
 
-<<<<<<< HEAD
-    const createPatient = () => {
-
-        // console.log("patient");
-=======
     // const togglePassword = () => {
     //     // When the handler is invoked
     //     // inverse the boolean state of passwordShown
@@ -148,7 +128,6 @@ export default function CreateP() {
      
         
         //console.log("patient");
->>>>>>> 190ac2c0030c0e3cc277cccb71d813c9a0bacc25
         // const par={"pat":patient,"doc":emaildoc}
 
         axios.post('http://localhost:5000/patients', patient).then(res => {

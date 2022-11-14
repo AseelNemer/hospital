@@ -132,6 +132,8 @@ const go=() =>{
 
 
       setAllEvents([...allEvents, newEvent]);
+      window.location.reload(false);
+
   }
 
   return (
