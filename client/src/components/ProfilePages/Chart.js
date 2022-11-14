@@ -27,16 +27,11 @@ export default function Chart() {
         }
     );
     const { id } = useParams();
-    // const saved = localStorage.getItem("doctor");
-
-    // setDoctor((saved));
-    // console.log(JSON.parse(localStorage.getItem('doctor')));
-
+   
     useEffect(() => {
         axios.get(`http://localhost:5000/doctors/${id}`).then((doctor) => {
-            setDoctor(doctor.data);
-            localStorage.setItem("doctor", (doctor));
-        }, doctor)
+            setDoctor(doctor.data.b);
+        })
 
     })
 

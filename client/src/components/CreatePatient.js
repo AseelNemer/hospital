@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -12,9 +13,10 @@ import { useLocation } from "react-router-dom";
 
 export default function CreateP() {
     const location = useLocation();
-    let iddoctor=location.state,idDoctor
+    let iddoctor = location.state, idDoctor
     //const { state } = state
-   //console.log("state:",iddoctor);
+    // console.log("state:", iddoctor);
+    const navigate = useNavigate()
 
     const [patient, setPatient] = useState({
 
@@ -26,25 +28,23 @@ export default function CreateP() {
         building: 'ii',
         city: 'ii',
         orgNumber: '3692581471',
-        myDoctor:iddoctor.idDoctor
+        myDoctor: iddoctor.idDoctor
 
     })
 
     const createPatient = () => {
-        console.log("patient");
+
+        // console.log("patient");
         // const par={"pat":patient,"doc":emaildoc}
 
-        axios.post('http://localhost:5000/patients', patient).then(response => { 
-            console.log("ss",response)
-        })
-        .catch(error => {
-            console.log("err",error.response)
-        });
-        // .then(() => {
-        //     window.location.reload(false);
-        //     //when i add a data it refresh the page
-        // })
+        axios.post('http://localhost:5000/patients', patient).then(res => {
+            if (res.data.statuss === "true") {
+                console.log("sucsesssss");
+                navigate(`/doctors/${iddoctor.idDoctor}`)
 
+            }
+            // console.log('my doctor id is : '+iddoctor);
+        })
     }
     return (
         <>
@@ -83,7 +83,7 @@ export default function CreateP() {
                 }} />
 
 
-            <Button component={Link} to="/Login" variant="contained" onClick={createPatient}>Create</Button>
+                <Button variant="contained" onClick={createPatient}>Create</Button>
 
             </Box>
         </>

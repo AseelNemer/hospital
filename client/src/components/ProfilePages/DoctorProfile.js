@@ -143,7 +143,8 @@ import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
+import { Link, NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -159,7 +160,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
+import Button from '@mui/material/Button';
 import HomeIcon from '@mui/icons-material/Home';
+import { useNavigate } from "react-router-dom";
 import Chart from './Chart';
 import Profile from './Profile.js'
 // import {Profile} from './Profile.js'
@@ -227,7 +230,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
-export default function DoctorProfile(props){
+export default function DoctorProfile(){
+    const [patientsList, setPatientList] = useState([]);
+
 
     const [doctor, setDoctor] = useState(
         {
@@ -238,16 +243,39 @@ export default function DoctorProfile(props){
         }
     );
     const { id } = useParams();
-    console.log(props);
-        const g=`/doctors/${id}/profile`
+
     useEffect(() => {
         axios.get(`http://localhost:5000/doctors/${id}`).then((doctor) => {
-            setDoctor(doctor.data);
-            localStorage.setItem("doctor",(doctor));
-            console.log('kkkkkkkkk'+doctor.data.firstName);
-        }, doctor)
+            setDoctor(doctor.data.b);
+            setPatientList(doctor.data.a);
+
+        }, [])
 
     })
+
+    const navigate=useNavigate()
+
+    const open1 = () => {
+        navigate(
+            "/registerpat", {
+            state: {
+                idDoctor: id
+            }
+        }
+        );
+    };
+
+
+    const open2 = () => {
+        navigate(
+                `/doctors/${id}/profile`, {
+            state: {
+                idDoctor: id
+            }
+        }
+        );
+    };
+
     // console.log(doctor.email);
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
@@ -258,65 +286,10 @@ export default function DoctorProfile(props){
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar position="absolute" open={open}>
-                    <Toolbar
-                        sx={{
-                            pr: '24px', // keep right padding when drawer closed
-                        }}
-                    >
-                        <IconButton
-                            edge="start"
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={toggleDrawer}
-                            sx={{
-                                marginRight: '36px',
-                                ...(open && { display: 'none' }),
-                            }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography
-                            component="h1"
-                            variant="h6"
-                            color="inherit"
-                            noWrap
-                            sx={{ flexGrow: 1 }}
-                        >
-                            Dashboard
-                        </Typography>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
-                    </Toolbar>
-                </AppBar>
+                
                 <Drawer variant="permanent" open={open}>
-                    <Toolbar
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'flex-end',
-                            px: [1],
-                        }}
-                    >
-                        <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon />
-                        </IconButton>
-                    </Toolbar>
-                    <Divider />
-                    <List component="nav">
-                        <ListItemButton component={Link} to = '/profile'>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Profile"  />
-                        </ListItemButton >
-                        {/* {mainListItems}
-                        <Divider sx={{ my: 1 }} />
-                        {secondaryListItems} */}
-                    </List>
+                    
+                    
                 </Drawer>
                 <Box
                     component="main"
@@ -344,6 +317,11 @@ export default function DoctorProfile(props){
                                     }}
                                 >
                                     <Chart ></Chart>
+                                    <Button onClick={open1}
+                                        variant="contained" color="primary">
+
+                                        Add patient
+                                    </Button>
                                     {/* <TableContainer component={Paper}>
                                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                             <TableHead>

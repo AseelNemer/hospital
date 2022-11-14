@@ -4,12 +4,6 @@ import jwt from 'jsonwebtoken';
 import PatientData from "../models/patient.js";
 
 
-
-
-const JWT_SECRET =
-  "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
-
-
 export const getDoctors = async (req, res) => {
     try {
         const allDoctors = await DoctorData.find();
@@ -100,7 +94,6 @@ export const showDoctor =async (req,res) => {
                 
             
         }
-       //console.log("arr is \n",arr);
         const par={"a":arr,"b":doctor}
         res.status(200).json(par);
       } catch (error) 

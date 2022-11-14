@@ -8,91 +8,77 @@ import NavBar from './components/NavBar/NavBar.js'
 import Create from './components/CreatePages/CreateDoctor.js'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react';
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './app.css';
 import Go from './components/ProfilePages/go.js'
 import Profile from './components/ProfilePages/Profile.js'
 import CreateP from './components/CreatePatient.js'
 import PatientProfile from './components/PatientProfile.js'
+import SideBar from './components/SideBar.js';
+import DoctorSidebar from './components/DoctorSidebar.js'
+import Schedule1 from './components/Schedule.js'
+// import { Schedule } from '@material-ui/icons'
+// import Profile1 fro
 
 function App() {
   const [healthID, setHealthID] = useState("");
   const [prescriptionID, setPrescriptionID] = useState("");
-  const [toastShow, setToastShow] = useState(false);
-  const [toastCondition, settoastCondition] = useState({
-    status: "",
-    message: "",
-  });
 
-  if (toastShow) {
-    if (toastCondition.status === "success") {
-      toast.success(toastCondition.message);
-    } else if (toastCondition.status === "error") {
-      toast.error(toastCondition.message);
-    } else if (toastCondition.status === "warning") {
-      toast.warn(toastCondition.message);
-    } else if (toastCondition.status == "info") {
-      toast.info(toastCondition.message);
-    }
-    settoastCondition({
-      status: "",
-      message: "",
-    });
-    setToastShow(false);
-  }
   const [user, setLoginUser] = useState({
     email: "",
-})
+  })
   const [doctorID, setDoctorID] = useState('');
 
   return (
 
     <div className="App">
-      <Router >
-        <div className='appHeader' class='appHeader'>
+      {/* <Router >
+        <div className='appHeader' >
           <NavBar />
-        </div>
-        <div className='appBody'>
-          <Routes >
-            {/* <Route exact path="/">
+        </div> */}
+      <div className='appBody'>
+        <Routes >
+          {/* <Route exact path="/">
               {
                 user && user._id ? <Homepage /> : <Login />
               }<Homepage /></Route> */}
-            <Route path="/" element={<Init />} />
-            <Route path="/PatientLogin" element={<PatientLogin setLoginUser={setLoginUser} />} />
-            <Route path="/Login" element={<Login
-              setLoginUser={setLoginUser}
-            />} />
-            <Route path="/Homepage" element={<Homepage />} />
-            <Route path='/doctors/:id'>
-            {console.log(user)}
-
-              <Route index element={<DoctorProfile
-                user={user}
-              />} />
-              {/* <Route path='/profile' element={<Profile
-                user={user}
-              />} /> */}
-            </Route> 
-            <Route path='/patients/:id' element={<PatientProfile/>}/>
-          <Route path='/register' element={<Create/>}/>
-          <Route path='/registerpat' element={<CreateP/>}/>
+          <Route path="/" element={<Init />} />
+          <Route path="/PatientLogin" element={<PatientLogin setLoginUser={setLoginUser} />} />
+          <Route path="/Login" element={<Login setLoginUser={setLoginUser} />} />
+          <Route path="/Homepage" element={<Homepage />} />
+          {/* <SideBar> */}
+            {/* <Route path='doctors/:id' >
+              <Route index element={<DoctorProfile />} />
+              <Route path='profile' element={<Profile />} />
+              <Route path='/patients/:id' element={<PatientProfile />} /></Route>
+             */}
 
 
-            <Route path='/profile' element={<Profile  user={user}
-             />}>
-              {console.log(user)} </Route>
+            <Route path='doctors'  element ={<DoctorSidebar/>}>
+              <Route path=':id' element={<DoctorProfile />} />
+              <Route path=':id/profile' element={<Profile />} />
+              <Route path=':id/schedule' element={<Schedule1/>}/>
+              {/* <Route path='/patients/:id' element={<PatientProfile />} /> */}
 
+            </Route>
+
+
+            <Route path='/patients/:id' element={<PatientProfile />} />
+            <Route path='/register' element={<Create />} />
+            <Route path='/registerpat' element={<CreateP />} />
+            <Route path='/profile' element={<Profile user={user} />}></Route>
+
+            {/* </SideBar> */}
+            {/* <Route path='/profile1' element={<Profile1 user={user} />}></Route> */}
             {/* <Route path='/doctors/:id' element={<DoctorProfile setLoginUser={setLoginUser}/> }/> */}
             {/* <Route path='/doctors/doctorProf' element={<DoctorProfile />} > */}
             <Route path='/register' element={<Create />} />
             {/* <Route path='/Go' element={<Go />} /> */}
 
-          </Routes>
-        </div>
-      </Router>
-    </div>
+        </Routes>
+      </div>
+    {/* </Router> */}
+    </div >
 
   );
 }

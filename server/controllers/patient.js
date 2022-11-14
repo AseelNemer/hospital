@@ -87,6 +87,8 @@ export const createPatient = async (req, res) => {
            
             user.sicks.push(newPatient);
             await user.save();
+            res.send({ message: "login sucess", user: user, statuss:"true" })
+
             //res.status(201).json(newPatient);
 
         }

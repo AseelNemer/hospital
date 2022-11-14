@@ -49,6 +49,12 @@ const doctorSchema =  mongoose.Schema({
       type:Schema.Types.ObjectId,
       ref:"patient"
     }
+  ],
+  schedule:[
+    {
+      type:Schema.Types.ObjectId,
+      ref:"schedule"
+    }
   ]
   
 })
