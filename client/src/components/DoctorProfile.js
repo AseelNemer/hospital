@@ -11,9 +11,10 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Navigate, useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import Button from '@mui/material/Button';
 import CreateP from './CreatePatient.js'
 import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
+
 
 
 
@@ -23,9 +24,9 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Doctorprofile() {
-    
+
     const [patientsList, setPatientList] = useState([]);
-    
+
 
     const [doctor, setDoctor] = useState(
         {
@@ -41,7 +42,7 @@ export default function Doctorprofile() {
     const { id } = useParams();
     //let dic={'doc':doctor}
     //console.log("my id ", id);
-   
+
     useEffect(() => {
 
 
@@ -59,7 +60,7 @@ export default function Doctorprofile() {
 
 
     })
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
     const open = () => {
         console.log("i am in nevigate");
@@ -67,6 +68,17 @@ export default function Doctorprofile() {
             "/registerpat", {
             state: {
                 idDoctor: id
+            }
+        }
+        );
+    };
+
+    const editpat = (idd) => {
+        console.log("i am in nevigate");
+        navigate(
+            "/editpatient", {
+            state: {
+                idpatient: idd
             }
         }
         );
@@ -118,6 +130,8 @@ export default function Doctorprofile() {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
+                            <TableCell>ID number</TableCell>
+
                             <TableCell>First Name</TableCell>
                             <TableCell align="right">Last name</TableCell>
                             <TableCell align="right">Mobile</TableCell>
@@ -130,12 +144,17 @@ export default function Doctorprofile() {
                                 key={key}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
+
                                 <TableCell component="th" scope="row">
-                                    {patient.firstName}
+                                    {patient.idnum}
                                 </TableCell>
+                                <TableCell align="right">{patient.firstName}</TableCell>
+
                                 <TableCell align="right">{patient.surName}</TableCell>
                                 <TableCell align="right">{patient.mobile}</TableCell>
                                 <TableCell align="right">{patient.email}</TableCell>
+                                <TableCell><button onClick={()=>editpat(patient._id)}
+                                    variant="contained" color="primary">EDIT</button></TableCell>
 
                                 <TableCell align="right">
                                 </TableCell>

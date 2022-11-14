@@ -23,7 +23,7 @@ const patientSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, "Please enter email"],
-    unique: [true, "Email already Exist"],
+    // unique: [true, "Email already Exist"],
     // validate: [isEmail, "Please Enter a valid Email"],
   },
 
@@ -33,9 +33,11 @@ const patientSchema = new mongoose.Schema({
     minlength: [8, "Minimum length of password should must be 8 characters"],
   },
   
-    building: {
+    idnum: {
       type: String,
       required: [true, "Please enter complete Address of contact person"],
+      unique: [true, "idnum already Exist"],
+
     },
     city: {
       type: String,
@@ -50,7 +52,14 @@ const patientSchema = new mongoose.Schema({
   {
     type:mongoose.Schema.Types.ObjectId,
     ref:"doctor"
-  }
+  },
+
+  myComplaints:
+  [{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"complaint"
+  }]
+
  })
 
 const patient = mongoose.model("patient", patientSchema);

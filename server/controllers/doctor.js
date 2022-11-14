@@ -1,7 +1,8 @@
 import DoctorData from "../models/doctor.js"; 
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 import PatientData from "../models/patient.js";
+import path from 'path';
+import multer from 'multer';
+
 
 
 export const getDoctors = async (req, res) => {
@@ -114,6 +115,7 @@ export const createDoctor = async (req, res) => {
         res.status(409).json({ message: error.message })
     }
 }
+
 
 
 // export const showDoctor = async (req, res) => {
