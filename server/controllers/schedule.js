@@ -1,5 +1,6 @@
 import DoctorData from "../models/doctor.js"; 
 import ScheduleData from '../models/schedule.js';
+import PatientData from '../models/patient.js'
 
 
 export const getSchedule = async (req, res) => {
@@ -28,6 +29,7 @@ export const showSchedule =async (req,res) => {
 export const createSchedule = async (req, res) => {
     const s1 = req.body;
     const iddoctor=s1.doctorID;
+    const idpatient=s1.patientID;
     const newSchedule = new ScheduleData(s1);
     try {
         await newSchedule.save();
@@ -45,6 +47,11 @@ export const createSchedule = async (req, res) => {
             }
     })
 
-
-  
+    PatientData.findOne({ _id:idpatient }, async(err, user) => {
+        if (user) {
+             user.schedule.push(newSchedule);
+             await user.save();
+            //  res.send({ message: "added schedule success", user: user, statuss:"true" })
+            }
+    })
 }

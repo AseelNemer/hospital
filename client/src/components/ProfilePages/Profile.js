@@ -1,6 +1,6 @@
+
 import React from 'react';
 import axios from 'axios';
-
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -130,20 +130,13 @@ const Profile = () => {
                     <Container maxWidth="lg" sx={{ mt: 0, mb: 4 }}>
                         <Grid container spacing={3}>
                             <Grid item xs={12} md={12} lg={12}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 400,
-                                    }}
-                                >
 
-                                    <h1>{doctor.firstName}</h1>
-
-
-
-                                </Paper>
+                                <h1 style={{ color: 'Blue' }}>welcome DR. {doctor.firstName}</h1>
+                                <h2>First Name :  {doctor.firstName}</h2>
+                                <h2>Sur Name :  {doctor.firstName}</h2>
+                                <h2>Email : {doctor.email}</h2>
+                                <h2>Mobile : {doctor.mobile}</h2>
+                                <h2>Building : {doctor.building}</h2>
                             </Grid>
                         </Grid>
                         <Copyright sx={{ pt: 4 }} />

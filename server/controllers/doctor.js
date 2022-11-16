@@ -1,5 +1,6 @@
 import DoctorData from "../models/doctor.js"; 
 import PatientData from "../models/patient.js";
+import ScheduleData from '../models/schedule.js'
 import path from 'path';
 import multer from 'multer';
 
@@ -63,6 +64,7 @@ export const loginnow = async (req, res) => {
 export const showDoctor =async (req,res) => {
     let flag=0
     let arr =[];
+    let ss=[];
       const id = req.params.id; 
 
       let doctor;
@@ -84,7 +86,7 @@ export const showDoctor =async (req,res) => {
                 //console.log(" doctor is : ", doctor.sicks[index],"  sick is : ",allpatients[i]._id,"\n" );
                 if(JSON.stringify(doctor.sicks[index])===JSON.stringify(allpatients[i]._id)){
                     
-                    //console.log("ss");
+                    // console.log("ss");
 
                     arr.push(allpatients[i])
                     flag=1;
@@ -95,7 +97,30 @@ export const showDoctor =async (req,res) => {
                 
             
         }
-        const par={"a":arr,"b":doctor}
+
+        const allSchedule = await ScheduleData.find();
+
+        
+        for (let index = 0; index < doctor.schedule.length; index++) {
+            flag=0;
+            for (let i = 0; i < allSchedule.length && flag==0; i++) {
+                //console.log(" doctor is : ", doctor.sicks[index],"  sick is : ",allpatients[i]._id,"\n" );
+                if(JSON.stringify(doctor.schedule[index])===JSON.stringify(allSchedule[i]._id)){
+                    
+                    // console.log("ss");
+
+                    ss.push(allSchedule[i])
+                    flag=1;
+                }
+
+                
+            }
+                
+            
+        }
+        // console.log("arr lenght : "+arr.length());
+        // console.log(doctor);
+        const par={"a":arr,"b":doctor,"s":ss}
         res.status(200).json(par);
       } catch (error) 
       {

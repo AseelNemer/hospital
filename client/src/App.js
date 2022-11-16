@@ -26,6 +26,7 @@ import DoctorSidebar from './components/DoctorSidebar.js'
 import Schedule1 from './components/Schedule.js'
 // import { Schedule } from '@material-ui/icons'
 // import Profile1 fro
+import DoctorPatients from './components/DoctorPatients.js' 
 
 function App() {
   const [healthID, setHealthID] = useState("");
@@ -53,8 +54,8 @@ function App() {
           <Route path="/PatientLogin" element={<PatientLogin setLoginUser={setLoginUser} />} />
           <Route path="/Login" element={<Login setLoginUser={setLoginUser} />} />
           <Route path="/Homepage" element={<Homepage />} />
-          <Route path='/doctors/:id' element={<Doctorprofile/>}/>
-          <Route path='/patients/:id' element={<PatientProfile/>}/>
+          {/* <Route path='/doctors/:id' element={<Doctorprofile/>}/> */}
+          {/* <Route path='/patients/:id' element={<PatientProfile/>}/> */}
           <Route path='/register' element={<Create/>}/>
           <Route path='/registerpat' element={<CreateP/>}/>
           <Route path='/editpatient' element={<Editpat/>}/>
@@ -68,8 +69,8 @@ function App() {
               <Route path=':id' element={<DoctorProfile />} />
               <Route path=':id/profile' element={<Profile />} />
               <Route path=':id/schedule' element={<Schedule1/>}/>
+              <Route path=':id/patients' element={<DoctorPatients/>}/>
               {/* <Route path='/patients/:id' element={<PatientProfile />} /> */}
-
             </Route>
 
 

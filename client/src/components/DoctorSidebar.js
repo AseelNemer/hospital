@@ -11,6 +11,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import HomeIcon from '@mui/icons-material/Home';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import AccessibilityNewTwoToneIcon from '@mui/icons-material/AccessibilityNewTwoTone';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -20,6 +22,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+
 
 
 function Copyright(props) {
@@ -110,6 +113,18 @@ export default function DoctorProfile() {
         );
     };
 
+
+    const open3 = () => {
+        console.log("at go to schdule");
+        navigate(
+            `/doctors/${id}/patients`, {
+            state: {
+                idDoctor: id
+            }
+        }
+        );
+    };
+
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
@@ -144,7 +159,7 @@ export default function DoctorProfile() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Dashboard
+                            Hospital 
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -168,9 +183,15 @@ export default function DoctorProfile() {
                         </ListItemButton >
                         <ListItemButton onClick={open2}>
                             <ListItemIcon>
-                                <HomeIcon />
+                                <CalendarMonthIcon />
                             </ListItemIcon>
                             <ListItemText primary="Schedule" />
+                        </ListItemButton >
+                        <ListItemButton onClick={open3}>
+                            <ListItemIcon>
+                                <AccessibilityNewTwoToneIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="My Patients" />
                         </ListItemButton >
                     </List>
                 </Drawer>

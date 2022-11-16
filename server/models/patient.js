@@ -58,7 +58,13 @@ const patientSchema = new mongoose.Schema({
   [{
     type:mongoose.Schema.Types.ObjectId,
     ref:"complaint"
-  }]
+  }],
+  schedule:[
+    {
+      type:Schema.Types.ObjectId,
+      ref:"schedule"
+    }
+  ]
 
  })
 

@@ -52,6 +52,7 @@ export default function PatientProfile() {
 
             // console.log(doctor.data);
             setPatient(patient.data);
+            console.log(patient);
             // console.log("ss",firstname);
         },patient)
         // .then(function (response) {

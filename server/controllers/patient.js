@@ -63,8 +63,8 @@ export const showPatient =async (req,res) => {
 
 export const createPatient = async (req, res) => {
     const patient = req.body;
-    const iddoctor=req.body.myDoctor
-    const emailpatient=req.body.email
+    const iddoctor=req.body.myDoctor;
+    const emailpatient=req.body.email;
     //console.log("patient :", patient);
 
     const newPatient = new PatientData(patient);
@@ -72,6 +72,7 @@ export const createPatient = async (req, res) => {
         await newPatient.save();
         //res.status(201).json(newPatient);
     } catch (error) {
+        // console.log(newPatient);
         res.status(409).json({ message: error.message })
     }
 
@@ -89,7 +90,7 @@ export const createPatient = async (req, res) => {
            
             user.sicks.push(newPatient);
             await user.save();
-            res.send({ message: "login sucess", user: user, statuss:"true" })
+            // res.send({ message: "login sucess", user: user, statuss:"true" })
 
             //res.status(201).json(newPatient);
 
